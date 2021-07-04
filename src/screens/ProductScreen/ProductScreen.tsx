@@ -3,11 +3,12 @@ import {View, Text} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import QuantitySelector from '../../components/QuantitySelector';
 import Button from '../../components/Button';
+import ImageCarousel from '../../components/ImageCarousel';
 import styles from './styles';
 
 import product from '../../data/product';
 
-const ProductScreen = () => {
+const ProductScreen: React.FC = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState(
     product?.options?.[0] ?? '',
   );
@@ -26,7 +27,7 @@ const ProductScreen = () => {
     <View style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
 
-      {/* Image Carousel */}
+      <ImageCarousel images={product.images} />
 
       {product.options && (
         <Picker
@@ -54,6 +55,8 @@ const ProductScreen = () => {
         onPress={() => {
           console.warn('Add To Cart');
         }}
+        // eslint-disable-next-line react-native/no-inline-styles
+        containerStyle={{backgroundColor: '#e3c905'}}
       />
 
       <Button
