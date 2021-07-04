@@ -10,6 +10,7 @@ const HomeScreen: React.FC = (): JSX.Element => {
       <FlatList
         data={products}
         renderItem={({item}) => <ProductItem item={item} />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

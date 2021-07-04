@@ -18,28 +18,34 @@ type Props = {
 const ProductItem: React.FC<Props> = ({item}): JSX.Element => {
   const {title, image, avgRating, oldPrice, price, ratings} = item;
 
-  const fullStar = (
-    <FontAwesome style={styles.star} name="star" size={18} color="#e47911" />
-  );
-
-  const halfStar = (
-    <FontAwesome
-      style={styles.star}
-      name="star-half-full"
-      size={18}
-      color="#e47911"
-    />
-  );
-
-  const emptyStar = (
-    <FontAwesome style={styles.star} name="star-o" size={18} color="#e47911" />
-  );
-
   const renderRatingStars = useMemo(
     () => () => {
-      // for (let i = 0; i < 100000000; i++) {
-      //   console.log(i);
-      // }
+      const fullStar = (
+        <FontAwesome
+          style={styles.star}
+          name="star"
+          size={18}
+          color="#e47911"
+        />
+      );
+
+      const halfStar = (
+        <FontAwesome
+          style={styles.star}
+          name="star-half-full"
+          size={18}
+          color="#e47911"
+        />
+      );
+
+      const emptyStar = (
+        <FontAwesome
+          style={styles.star}
+          name="star-o"
+          size={18}
+          color="#e47911"
+        />
+      );
 
       const resArr = [];
       let index = 0;
@@ -60,7 +66,7 @@ const ProductItem: React.FC<Props> = ({item}): JSX.Element => {
 
       return resArr;
     },
-    [item],
+    [avgRating],
   );
 
   return (
