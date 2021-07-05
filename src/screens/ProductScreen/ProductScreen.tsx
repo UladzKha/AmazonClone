@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import QuantitySelector from '../../components/QuantitySelector';
 import Button from '../../components/Button';
@@ -24,7 +24,7 @@ const ProductScreen: React.FC = (): JSX.Element => {
   };
 
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
 
       <ImageCarousel images={product.images} />
@@ -65,7 +65,9 @@ const ProductScreen: React.FC = (): JSX.Element => {
           console.warn('Buy Now');
         }}
       />
-    </View>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
+      <View style={{marginBottom: 20}} />
+    </ScrollView>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {View, Image, FlatList, useWindowDimensions} from 'react-native';
 import styles from './styles';
 
@@ -21,17 +21,20 @@ const ImageCarousel: React.FC<Props> = ({images}): JSX.Element => {
 
   const windowWidth = useWindowDimensions().width;
 
-  const renderDots = () =>
-    images.map((_, index) => (
-      <View
-        key={index}
-        style={[
-          styles.dot,
-          // eslint-disable-next-line react-native/no-inline-styles
-          {backgroundColor: index === activeIndex ? '#c9c9c9' : '#ededed'},
-        ]}
-      />
-    ));
+  const renderDots = useCallback(
+    () =>
+      images.map((_, index) => (
+        <View
+          key={index}
+          style={[
+            styles.dot,
+            // eslint-disable-next-line react-native/no-inline-styles
+            {backgroundColor: index === activeIndex ? '#c9c9c9' : '#ededed'},
+          ]}
+        />
+      )),
+    [activeIndex, images],
+  );
 
   return (
     <View style={styles.root}>

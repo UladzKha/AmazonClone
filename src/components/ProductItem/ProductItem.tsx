@@ -18,56 +18,48 @@ type Props = {
 const ProductItem: React.FC<Props> = ({item}): JSX.Element => {
   const {title, image, avgRating, oldPrice, price, ratings} = item;
 
-  const renderRatingStars = useMemo(
-    () => () => {
-      const fullStar = (
-        <FontAwesome
-          style={styles.star}
-          name="star"
-          size={18}
-          color="#e47911"
-        />
-      );
+  const renderRatingStars = useMemo(() => {
+    const fullStar = (
+      <FontAwesome style={styles.star} name="star" size={18} color="#e47911" />
+    );
 
-      const halfStar = (
-        <FontAwesome
-          style={styles.star}
-          name="star-half-full"
-          size={18}
-          color="#e47911"
-        />
-      );
+    const halfStar = (
+      <FontAwesome
+        style={styles.star}
+        name="star-half-full"
+        size={18}
+        color="#e47911"
+      />
+    );
 
-      const emptyStar = (
-        <FontAwesome
-          style={styles.star}
-          name="star-o"
-          size={18}
-          color="#e47911"
-        />
-      );
+    const emptyStar = (
+      <FontAwesome
+        style={styles.star}
+        name="star-o"
+        size={18}
+        color="#e47911"
+      />
+    );
 
-      const resArr = [];
-      let index = 0;
+    const resArr = [];
+    let index = 0;
 
-      for (let i = index; i < Math.floor(avgRating); i++) {
-        resArr.push({...fullStar, key: {index}});
-        index++;
-      }
+    for (let i = index; i < Math.floor(avgRating); i++) {
+      resArr.push({...fullStar, key: {index}});
+      index++;
+    }
 
-      if (index < 5 && avgRating !== Math.floor(avgRating)) {
-        resArr.push({...halfStar, key: index});
-        index++;
-      }
+    if (index < 5 && avgRating !== Math.floor(avgRating)) {
+      resArr.push({...halfStar, key: index});
+      index++;
+    }
 
-      for (let i = index; i < 5; i++) {
-        resArr.push({...emptyStar, key: index});
-      }
+    for (let i = index; i < 5; i++) {
+      resArr.push({...emptyStar, key: index});
+    }
 
-      return resArr;
-    },
-    [avgRating],
-  );
+    return resArr;
+  }, [avgRating]);
 
   return (
     <View style={styles.root}>
