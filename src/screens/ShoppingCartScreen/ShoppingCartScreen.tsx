@@ -27,6 +27,7 @@ const ShoppingCartScreen: React.FC = (): JSX.Element => {
                 ${totalPrice.toFixed(2)}
               </Text>
             </Text>
+
             <Button
               text="Proceed to checkout"
               onPress={() => console.warn('go to checkout')}

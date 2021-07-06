@@ -58,6 +58,7 @@ const ProductCartItem: React.FC<Props> = ({cartItem}): JSX.Element => {
           </Text>
         </View>
       </View>
+
       <View style={styles.quantityContainer}>
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
       </View>

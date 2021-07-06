@@ -24,7 +24,9 @@ const QuantitySelector: React.FC<Props> = ({
       <Pressable style={styles.button} onPress={onMinus}>
         <Text style={styles.buttonText}>−</Text>
       </Pressable>
+
       <Text style={styles.quantity}>{quantity}</Text>
+
       <Pressable style={styles.button} onPress={onPlus}>
         <Text style={styles.buttonText}>+</Text>
       </Pressable>
